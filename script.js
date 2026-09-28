@@ -252,7 +252,9 @@ function updateList(selector,coins,positive){
 
 }
 
-
 loadMarket();
+loadBitcoinChart();
 
 setInterval(loadMarket,60000);
+setInterval(loadBitcoinChart,300000);
+

@@ -1,3 +1,4 @@
+let btcChart=null;
 const API="https://api.coingecko.com/api/v3";
 
 async function loadMarket(){
@@ -150,6 +151,102 @@ function updateList(selector,coins,positive){
 
   changeElement.className=
    positive?"positive":"negative";
+  async function loadBitcoinChart(){
+
+ try{
+
+  const r=await fetch(
+   `${API}/coins/bitcoin/market_chart?vs_currency=usd&days=7&interval=hourly`
+  );
+
+  const data=await r.json();
+
+  const prices=data.prices;
+
+  const labels=prices.map(p=>{
+   const date=new Date(p[0]);
+   return date.toLocaleDateString([],{
+    month:"short",
+    day:"numeric"
+   });
+  });
+
+  const values=prices.map(p=>p[1]);
+
+  const canvas=document.getElementById("btcChart");
+
+  if(!canvas) return;
+
+  const ctx=canvas.getContext("2d");
+
+  if(btcChart){
+   btcChart.destroy();
+  }
+
+  btcChart=new Chart(ctx,{
+   type:"line",
+
+   data:{
+    labels:labels,
+
+    datasets:[{
+     label:"Bitcoin Price",
+     data:values,
+
+     borderWidth:2,
+     pointRadius:0,
+     tension:0.35,
+
+     fill:true
+    }]
+   },
+
+   options:{
+    responsive:true,
+    maintainAspectRatio:false,
+
+    interaction:{
+     intersect:false,
+     mode:"index"
+    },
+
+    plugins:{
+     legend:{
+      display:false
+     },
+
+     tooltip:{
+      callbacks:{
+       label:function(context){
+        return "$"+context.parsed.y.toLocaleString();
+       }
+      }
+     }
+    },
+
+    scales:{
+     x:{
+      display:false
+     },
+
+     y:{
+      ticks:{
+       callback:function(value){
+        return "$"+Number(value).toLocaleString();
+       }
+      }
+     }
+    }
+   }
+  });
+
+ }catch(e){
+
+  console.log("Bitcoin chart error:",e);
+
+ }
+
+}
 
  });
 

@@ -15,7 +15,6 @@
 
 <div class="app">
 
-    <!-- SIDEBAR -->
     <aside class="sidebar">
 
         <div class="brand">
@@ -109,10 +108,8 @@
     </aside>
 
 
-    <!-- MAIN -->
     <main class="main" id="dashboard">
 
-        <!-- TOP BAR -->
         <header class="topbar">
 
             <div class="mobile-brand">
@@ -121,11 +118,14 @@
 
             <div class="top-search">
                 <span>⌕</span>
+
                 <input
                     type="text"
                     id="globalSearch"
                     placeholder="Search crypto..."
+                    autocomplete="off"
                 >
+
             </div>
 
             <div class="top-actions">
@@ -135,6 +135,7 @@
                 </button>
 
                 <div class="profile">
+
                     <div class="profile-avatar">
                         CO
                     </div>
@@ -143,6 +144,7 @@
                         <strong>Investor</strong>
                         <span>Market User</span>
                     </div>
+
                 </div>
 
             </div>
@@ -150,7 +152,6 @@
         </header>
 
 
-        <!-- HERO -->
         <section class="hero">
 
             <div>
@@ -178,7 +179,6 @@
         </section>
 
 
-        <!-- GLOBAL MARKET STATS -->
         <section class="stats-grid">
 
             <div class="stat-card">
@@ -245,7 +245,10 @@
 
                 <span>Market Sentiment</span>
 
-                <strong class="stat-value" id="marketSentiment">
+                <strong
+                    class="stat-value"
+                    id="marketSentiment"
+                >
                     --
                 </strong>
 
@@ -258,8 +261,10 @@
         </section>
 
 
-        <!-- BITCOIN CHART -->
-        <section class="chart-section" id="bitcoin-chart">
+        <section
+            class="chart-section"
+            id="bitcoin-chart"
+        >
 
             <div class="panel chart-panel">
 
@@ -323,18 +328,23 @@
 
 
                 <div class="chart-placeholder">
+
                     <canvas id="btcChart"></canvas>
+
                 </div>
 
             </div>
 
 
-            <!-- FEAR & GREED -->
-            <div class="panel sentiment-panel" id="sentiment">
+            <div
+                class="panel sentiment-panel"
+                id="sentiment"
+            >
 
                 <div class="panel-header">
 
                     <div>
+
                         <span class="section-label">
                             MARKET SENTIMENT
                         </span>
@@ -342,6 +352,7 @@
                         <h3>
                             Fear & Greed
                         </h3>
+
                     </div>
 
                 </div>
@@ -390,6 +401,7 @@
 
                 </div>
 
+
                 <small class="source">
                     Source: Alternative.me
                 </small>
@@ -399,12 +411,12 @@
         </section>
 
 
-        <!-- MARKET MOVERS -->
         <section class="movers-section">
 
             <div class="section-heading">
 
                 <div>
+
                     <span class="section-label">
                         MARKET ACTIVITY
                     </span>
@@ -416,6 +428,7 @@
                     <p>
                         See which assets are moving across the market.
                     </p>
+
                 </div>
 
             </div>
@@ -424,306 +437,14 @@
             <div class="movers-grid">
 
 
-                <!-- GAINERS -->
                 <div class="panel">
 
                     <div class="panel-header">
 
                         <div>
+
                             <h3>
                                 🚀 Top Gainers
                             </h3>
 
                             <span>
-                                Tracked market assets
-                            </span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="asset-list" id="gainersList">
-
-                        <div class="asset-row">
-                            Loading...
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- LOSERS -->
-                <div class="panel">
-
-                    <div class="panel-header">
-
-                        <div>
-                            <h3>
-                                🔻 Top Losers
-                            </h3>
-
-                            <span>
-                                Tracked market assets
-                            </span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="asset-list" id="losersList">
-
-                        <div class="asset-row">
-                            Loading...
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- TRENDING -->
-                <div class="panel">
-
-                    <div class="panel-header">
-
-                        <div>
-                            <h3>
-                                🔥 Trending
-                            </h3>
-
-                            <span>
-                                Currently trending
-                            </span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="asset-list" id="trendingList">
-
-                        <div class="asset-row">
-                            Loading...
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- COIN EXPLORER -->
-        <section
-            class="coin-explorer"
-            id="coin-explorer"
-        >
-
-            <div class="section-heading">
-
-                <div>
-
-                    <span class="section-label">
-                        CRYPTO DATABASE
-                    </span>
-
-                    <h2>
-                        Coin Explorer
-                    </h2>
-
-                    <p>
-                        Search and explore live cryptocurrency market data.
-                    </p>
-
-                </div>
-
-
-                <div class="coin-search">
-
-                    <input
-                        type="text"
-                        id="coinSearch"
-                        placeholder="Search Bitcoin, Ethereum..."
-                        autocomplete="off"
-                    >
-
-                </div>
-
-            </div>
-
-
-            <div class="coin-table-wrapper">
-
-                <table class="coin-table">
-
-                    <thead>
-
-                        <tr>
-
-                            <th>
-                                #
-                            </th>
-
-                            <th>
-                                Asset
-                            </th>
-
-                            <th>
-                                Price
-                            </th>
-
-                            <th>
-                                24H
-                            </th>
-
-                            <th>
-                                Market Cap
-                            </th>
-
-                            <th>
-                                24H Volume
-                            </th>
-
-                        </tr>
-
-                    </thead>
-
-
-                    <tbody id="coinTableBody">
-
-                        <tr>
-
-                            <td
-                                colspan="6"
-                                class="table-loading"
-                            >
-                                Loading cryptocurrency data...
-                            </td>
-
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-
-            <div class="coin-explorer-footer">
-
-                <button
-                    id="loadMoreCoins"
-                    class="primary-button"
-                >
-                    Load More Coins
-                </button>
-
-            </div>
-
-        </section>
-
-
-        <!-- MARKET INTELLIGENCE -->
-        <section class="intelligence-section">
-
-            <div class="section-heading">
-
-                <div>
-
-                    <span class="section-label">
-                        INTELLIGENCE
-                    </span>
-
-                    <h2>
-                        Market Intelligence
-                    </h2>
-
-                    <p>
-                        Key information from the current market.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="intelligence-grid">
-
-                <div class="panel intelligence-card">
-
-                    <span>
-                        Bitcoin
-                    </span>
-
-                    <strong id="btcIntelligence">
-                        Monitoring market data
-                    </strong>
-
-                    <p>
-                        Live Bitcoin market information is being tracked.
-                    </p>
-
-                </div>
-
-
-                <div class="panel intelligence-card">
-
-                    <span>
-                        Market Sentiment
-                    </span>
-
-                    <strong id="sentimentIntelligence">
-                        Loading...
-                    </strong>
-
-                    <p>
-                        Current market sentiment from the Fear & Greed Index.
-                    </p>
-
-                </div>
-
-
-                <div class="panel intelligence-card">
-
-                    <span>
-                        Market Status
-                    </span>
-
-                    <strong>
-                        Live
-                    </strong>
-
-                    <p>
-                        Crypto market data is updating automatically.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- WATCHLIST -->
-        <section class="watchlist-section">
-
-            <div class="section-heading">
-
-                <div>
-
-                    <span class="section-label">
-                        PERSONAL TRACKING
-                    </span>
-
-                    <h2>
-                        Watchlist
-                    </h2>
-
-                </div>
-
-            </div>
-
-
-            <div class="

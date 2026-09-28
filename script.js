@@ -1,6 +1,50 @@
 let btcChart=null;
 const API="https://api.coingecko.com/api/v3";
+async function loadFearGreed(){
 
+ try{
+
+  const r=await fetch(
+   "https://api.alternative.me/fng/?limit=1"
+  );
+
+  const d=await r.json();
+
+  const data=d.data[0];
+
+  const value=parseInt(data.value);
+
+  const classification=data.value_classification;
+
+  const valueElement=document.getElementById("fearGreedValue");
+  const labelElement=document.getElementById("fearGreedLabel");
+  const sentimentElement=document.getElementById("marketSentiment");
+
+  if(valueElement){
+   valueElement.textContent=value;
+  }
+
+  if(labelElement){
+   labelElement.textContent=classification;
+  }
+
+  if(sentimentElement){
+   sentimentElement.textContent=classification;
+  }
+
+  console.log(
+   "Fear & Greed:",
+   value,
+   classification
+  );
+
+ }catch(e){
+
+  console.log("Fear & Greed error:",e);
+
+ }
+
+}
 async function loadMarket(){
  try{
   const r=await fetch(`${API}/global`);
@@ -254,7 +298,8 @@ function updateList(selector,coins,positive){
 
 loadMarket();
 loadBitcoinChart();
+loadFearGreed();
 
 setInterval(loadMarket,60000);
 setInterval(loadBitcoinChart,300000);
-
+setInterval(loadFearGreed,300000);

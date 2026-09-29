@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Crypto Online — Portfolio</title>
+
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link
+ href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+ rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="app">
+
+<aside class="sidebar" id="sidebar">
+
+<div class="brand">
+<div class="brand-mark">C</div>
+<div>
+<strong>Crypto Online</strong>
+<span>Market Intelligence</span>
+</div>
+</div>
+
+<nav class="sidebar-nav">
+
+<div class="nav-label">MAIN</div>
+
+<a href="index.html" class="nav-link">
+<span>⌂</span><span>Dashboard</span>
+</a>
+
+<a href="markets.html" class="nav-link">
+<span>◈</span><span>Markets</span>
+</a>
+
+<div class="nav-label">PERSONAL</div>
+
+<a href="portfolio.html" class="nav-link active">
+<span>▣</span><span>Portfolio</span>
+</a>
+
+<a href="#watchlist" class="nav-link">
+<span>★</span><span>Watchlist</span>
+</a>
+
+<div class="nav-label">INTELLIGENCE</div>
+
+<a href="intelligence.html" class="nav-link">
+<span>◔</span><span>Intelligence</span>
+</a>
+
+<a href="intelligence.html#ai" class="nav-link">
+<span>✦</span><span>AI Assistant</span>
+</a>
+
+<div class="nav-label">RESOURCES</div>
+
+<a href="resources.html" class="nav-link">
+<span>▤</span><span>News & Academy</span>
+</a>
+
+</nav>
+
+</aside>
+
+<main class="main">
+
+<header class="topbar">
+
+<button class="mobile-menu"
+        id="mobileMenu">
+☰
+</button>
+
+<div class="page-heading">
+<span class="eyebrow">PERSONAL TRACKING</span>
+<h1>Portfolio</h1>
+</div>
+
+<div class="topbar-actions">
+
+<div class="global-search">
+<span>⌕</span>
+<input id="globalSearch"
+       type="search"
+       placeholder="Search crypto...">
+<div id="globalSearchResults"></div>
+</div>
+
+<button class="top-icon"
+        id="refreshMarket">
+↻
+</button>
+
+</div>
+
+</header>
+
+<section class="page">
+
+<div class="page-intro">
+<span class="eyebrow">YOUR CRYPTO WORKSPACE</span>
+<h2>Track what matters to you.</h2>
+<p>
+Manage holdings, monitor your watchlist,
+record transactions and create price alerts.
+</p>
+</div>
+<div class="metric-grid portfolio-metrics">
+
+<article class="metric-card">
+<span>Current Value</span>
+<strong id="portfolioCurrentValue">$0</strong>
+<small>Live portfolio value</small>
+</article>
+
+<article class="metric-card">
+<span>Total Invested</span>
+<strong id="portfolioInvested">$0</strong>
+<small>Recorded cost basis</small>
+</article>
+
+<article class="metric-card">
+<span>Unrealized P/L</span>
+<strong id="portfolioProfitLoss">$0</strong>
+<small>Current minus cost</small>
+</article>
+
+<article class="metric-card">
+<span>P/L %</span>
+<strong id="portfolioProfitPercent">0%</strong>
+<small>Portfolio performance</small>
+</article>
+
+<article class="metric-card">
+<span>Holdings</span>
+<strong id="portfolioHoldingsCount">0</strong>
+<small>Tracked assets</small>
+</article>
+
+</div>
+
+
+<section class="surface portfolio-add">
+
+<div class="surface-header">
+<div>
+<span class="eyebrow">ADD HOLDING</span>
+<h3>Portfolio Asset</h3>
+</div>
+</div>
+
+<div class="form-grid">
+
+<div class="field">
+<label>Asset</label>
+<select id="portfolioCoin">
+<option value="">Select asset</option>
+</select>
+</div>
+
+<div class="field">
+<label>Quantity</label>
+<input id="portfolioQuantity"
+       type="number"
+       min="0"
+       step="any"
+       placeholder="0.00">
+</div>
+
+<div class="field">
+<label>Average Buy Price</label>
+<input id="portfolioBuyPrice"
+       type="number"
+       min="0"
+       step="any"
+       placeholder="USD">
+</div>
+
+<button
+ id="addPortfolioAsset"
+ class="button primary">
+Add Holding
+</button>
+
+</div>
+
+</section>
+
+
+<section class="section-block">
+
+<div class="section-heading">
+<div>
+<span class="eyebrow">PERFORMANCE</span>
+<h2>Portfolio Intelligence</h2>
+</div>
+</div>
+
+<div id="portfolioIntelligence"
+     class="portfolio-intelligence-grid">
+
+<div class="surface insight-card">
+<span class="eyebrow">LARGEST HOLDING</span>
+<strong id="largestHolding">--</strong>
+<small id="largestHoldingPercent">--</small>
+</div>
+
+<div class="surface insight-card">
+<span class="eyebrow">CONCENTRATION</span>
+<strong id="portfolioHHI">--</strong>
+<small>Allocation concentration index</small>
+</div>
+
+<div class="surface insight-card">
+<span class="eyebrow">GAINERS</span>
+<strong id="portfolioGainers">0</strong>
+<small>Positive current P/L</small>
+</div>
+
+<div class="surface insight-card">
+<span class="eyebrow">LOSERS</span>
+<strong id="portfolioLosers">0</strong>
+<small>Negative current P/L</small>
+</div>
+
+</div>
+
+</section>
+<section class="section-block">
+
+<div class="section-heading">
+<div>
+<span class="eyebrow">HOLDINGS</span>
+<h2>Your Portfolio</h2>
+</div>
+</div>
+
+<div class="surface">
+
+<div class="table-scroll">
+
+<table class="data-table">
+
+<thead>
+<tr>
+<th>Asset</th>
+<th>Quantity</th>
+<th>Buy Price</th>
+<th>Current Price</th>
+<th>Value</th>
+<th>P/L</th>
+<th>Allocation</th>
+<th></th>
+</tr>
+</thead>
+
+<tbody id="portfolioTable">
+
+<tr>
+<td colspan="8"
+    class="table-loading">
+Your portfolio is empty.
+</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="watchlist"
+         class="section-block">
+
+<div class="section-heading">
+
+<div>
+<span class="eyebrow">PERSONAL TRACKING</span>
+<h2>
+Watchlist
+<span id="watchlistCount"
+      class="count-pill">
+0
+</span>
+</h2>
+</div>
+
+<div class="watchlist-filter">
+<button class="filter-chip active"
+        data-watch-filter="all">
+All
+</button>
+
+<button class="filter-chip"
+        data-watch-filter="gainers">
+Gainers
+</button>
+
+<button class="filter-chip"
+        data-watch-filter="losers">
+Losers
+</button>
+</div>
+
+</div>
+
+<div id="watchlistContainer"
+     class="watchlist-grid">
+
+<div class="empty-state">
+<span>★</span>
+<h3>Your watchlist is empty</h3>
+<p>
+Open Markets and add assets you want
+to monitor.
+</p>
+</div>
+
+</div>
+
+</section>
+<section class="section-block">
+
+<div class="section-heading">
+<div>
+<span class="eyebrow">TRANSACTIONS</span>
+<h2>Transaction Ledger</h2>
+</div>
+
+<button
+ id="exportTransactions"
+ class="button secondary">
+Export CSV
+</button>
+</div>
+
+<div class="surface">
+
+<div class="form-grid ledger-form">
+
+<div class="field">
+<label>Asset</label>
+<select id="transactionCoin">
+<option value="">Select asset</option>
+</select>
+</div>
+
+<div class="field">
+<label>Type</label>
+<select id="transactionType">
+<option value="buy">Buy</option>
+<option value="sell">Sell</option>
+</select>
+</div>
+
+<div class="field">
+<label>Quantity</label>
+<input id="transactionQuantity"
+       type="number"
+       step="any">
+</div>
+
+<div class="field">
+<label>Price</label>
+<input id="transactionPrice"
+       type="number"
+       step="any">
+</div>
+
+<div class="field">
+<label>Fee</label>
+<input id="transactionFee"
+       type="number"
+       step="any"
+       value="0">
+</div>
+
+<div class="field">
+<label>Date</label>
+<input id="transactionDate"
+       type="date">
+</div>
+
+<button
+ id="addTransaction"
+ class="button primary">
+Record Transaction
+</button>
+
+</div>
+
+
+<div class="ledger-summary">
+
+<div>
+<span>Total Buys</span>
+<strong id="ledgerBuys">$0</strong>
+</div>
+
+<div>
+<span>Total Sells</span>
+<strong id="ledgerSells">$0</strong>
+</div>
+
+<div>
+<span>Total Fees</span>
+<strong id="ledgerFees">$0</strong>
+</div>
+
+<div>
+<span>Realized P/L</span>
+<strong id="ledgerRealized">$0</strong>
+</div>
+
+</div>
+
+
+<div class="table-scroll">
+
+<table class="data-table">
+
+<thead>
+<tr>
+<th>Date</th>
+<th>Asset</th>
+<th>Type</th>
+<th>Quantity</th>
+<th>Price</th>
+<th>Fee</th>
+<th>Total</th>
+<th></th>
+</tr>
+</thead>
+
+<tbody id="transactionTable">
+
+<tr>
+<td colspan="8"
+    class="table-loading">
+No transactions recorded.
+</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section-block">
+
+<div class="section-heading">
+<div>
+<span class="eyebrow">ALERTS</span>
+<h2>Price & Market Alerts</h2>
+</div>
+</div>
+
+<div class="surface">
+
+<div class="form-grid">
+
+<div class="field">
+<label>Asset</label>
+<select id="alertCoin">
+<option value="">Select asset</option>
+</select>
+</div>
+
+<div class="field">
+<label>Condition</label>
+<select id="alertCondition">
+<option value="above">Price above</option>
+<option value="below">Price below</option>
+<option value="change_above">24H change above</option>
+<option value="change_below">24H change below</option>
+</select>
+</div>
+
+<div class="field">
+<label>Target</label>
+<input id="alertTarget"
+       type="number"
+       step="any"
+       placeholder="Target value">
+</div>
+
+<button
+ id="addAlert"
+ class="button primary">
+Create Alert
+</button>
+
+</div>
+
+<div id="alertsList"
+     class="alerts-list">
+
+<div class="empty-small">
+No alerts created.
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</section>
+
+<footer class="footer">
+<strong>Crypto Online</strong>
+<span>Personal Crypto Workspace</span>
+</footer>
+
+</main>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

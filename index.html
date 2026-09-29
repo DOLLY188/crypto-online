@@ -4,28 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Crypto Online</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial;background:#0b1020;color:#fff}
-header{padding:22px;text-align:center;background:#111936;border-bottom:1px solid #29365f}
+*{box-sizing:border-box}body{margin:0;font-family:Arial;background:#0b1020;color:white}
+header{padding:22px;text-align:center;background:#111936}
 h1{margin:0;color:#5ee7ff}header p{color:#9aa7c7}
-main{max-width:1100px;margin:auto;padding:25px}
+main{max-width:1100px;margin:auto;padding:22px}
 .panel{background:#111936;padding:20px;border-radius:16px;margin-bottom:20px}
+.summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.stat{background:#151e3d;padding:18px;border-radius:12px}
+.stat b{display:block;font-size:21px;margin-top:8px}
+form{display:grid;grid-template-columns:1fr 1fr auto;gap:10px}
 input,button{padding:13px;border:0;border-radius:9px}
-input{width:70%;background:#202a49;color:white}
+input{background:#202a49;color:white}
 button{background:#5ee7ff;font-weight:bold;cursor:pointer}
-#coins{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
-.coin{background:#151e3d;padding:20px;border-radius:16px;border:1px solid #29365f;cursor:pointer}
-.coin:hover{border-color:#5ee7ff;transform:translateY(-2px)}
-.price{font-size:25px;font-weight:bold;margin:15px 0}
+.hold{background:#151e3d;padding:17px;border-radius:12px;margin:10px 0}
+.row{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .up{color:#42e695}.down{color:#ff637d}
-.remove{margin-top:15px;background:#29365f;color:white}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
-.stat{background:#151e3d;padding:15px;border-radius:12px}
-.stat b{display:block;font-size:18px;margin-top:8px}
-#details{display:none}
-.back{background:#29365f;color:white;margin-bottom:15px}
-canvas{max-height:400px}
+.remove{background:#29365f;color:white}
 </style>
 </head>
 
@@ -33,142 +28,108 @@ canvas{max-height:400px}
 
 <header>
 <h1>₿ Crypto Online</h1>
-<p>Your personal crypto market dashboard</p>
+<p>Crypto market & portfolio dashboard</p>
 </header>
 
 <main>
 
-<div id="dashboard">
-
 <div class="panel">
-<h2>➕ Add Cryptocurrency</h2>
-<input id="coinInput" placeholder="bitcoin, ethereum, solana">
-<button onclick="addCoin()">Add</button>
-</div>
+<h2>💼 My Portfolio</h2>
 
-<div class="panel">
-<h2>📊 My Watchlist</h2>
-<div id="coins"></div>
-</div>
-
-</div>
-
-<div id="details">
-
-<button class="back" onclick="showDashboard()">← Back</button>
-
-<div class="panel">
-<h2 id="coinName">Coin</h2>
-
-<div class="stats">
-<div class="stat">Price<b id="detailPrice">-</b></div>
-<div class="stat">24h Change<b id="detailChange">-</b></div>
-<div class="stat">24h High<b id="detailHigh">-</b></div>
-<div class="stat">24h Low<b id="detailLow">-</b></div>
-<div class="stat">Market Cap<b id="detailCap">-</b></div>
-<div class="stat">Volume<b id="detailVolume">-</b></div>
+<div class="summary">
+<div class="stat">Total Value<b id="total">$0.00</b></div>
+<div class="stat">Invested<b id="invested">$0.00</b></div>
+<div class="stat">Profit / Loss<b id="profit">$0.00</b></div>
 </div>
 </div>
 
 <div class="panel">
-<h2>📈 7 Day Price Chart</h2>
-<canvas id="chart"></canvas>
+<h2>➕ Add Holding</h2>
+
+<form onsubmit="addHolding(event)">
+<input id="coin" placeholder="bitcoin" required>
+<input id="amount" type="number" step="any" placeholder="Amount owned" required>
+<button>Add</button>
+</form>
 </div>
 
+<div class="panel">
+<h2>📊 Holdings</h2>
+<div id="holdings">No holdings yet.</div>
 </div>
 
 </main>
 
 <script>
-let coins=JSON.parse(localStorage.getItem("coins")||'["bitcoin"]');
-let chart;
+let holdings=JSON.parse(localStorage.getItem("portfolio")||"[]");
 
-async function loadCoins(){
-const box=document.getElementById("coins");
+async function load(){
+let total=0,invest=0;
+let box=document.getElementById("holdings");
 box.innerHTML="";
 
-for(const id of coins){
+for(let [i,h] of holdings.entries()){
 try{
-const r=await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${id}&vs_currencies=usd&include_24hr_change=true`);
-const d=await r.json(),c=d[id];
-if(!c)continue;
+let r=await fetch(
+`https://api.coingecko.com/api/v3/simple/price?ids=${h.coin}&vs_currencies=usd`
+);
+let d=await r.json();
+let price=d[h.coin]?.usd;
 
-let change=c.usd_24h_change||0;
+if(!price)continue;
+
+let value=price*h.amount;
+total+=value;
+invest+=h.cost||0;
 
 box.innerHTML+=`
-<div class="coin" onclick="showDetails('${id}')">
-<h2>🪙 ${id.toUpperCase()}</h2>
-<div class="price">$${c.usd.toLocaleString()}</div>
-<div class="${change>=0?'up':'down'}">
-${change>=0?'▲':'▼'} ${change.toFixed(2)}%
+<div class="hold">
+<div class="row">
+<strong>🪙 ${h.coin.toUpperCase()}</strong>
+<span>${h.amount} coins</span>
 </div>
-<button class="remove" onclick="event.stopPropagation();removeCoin('${id}')">Remove</button>
+<div class="row">
+<span>Price: $${price.toLocaleString()}</span>
+<strong>$${value.toLocaleString()}</strong>
+</div>
+<button class="remove" onclick="removeHolding(${i})">Remove</button>
 </div>`;
 }catch(e){}
 }
+
+document.getElementById("total").textContent=
+"$"+total.toLocaleString(undefined,{minimumFractionDigits:2});
+
+document.getElementById("invested").textContent=
+"$"+invest.toLocaleString(undefined,{minimumFractionDigits:2});
+
+let p=total-invest;
+let el=document.getElementById("profit");
+el.textContent=(p>=0?"+$":"-$")+Math.abs(p).toLocaleString(undefined,{minimumFractionDigits:2});
+el.className=p>=0?"up":"down";
 }
 
-function addCoin(){
-let id=document.getElementById("coinInput").value.trim().toLowerCase();
-if(!id)return;
-if(!coins.includes(id))coins.push(id);
-localStorage.setItem("coins",JSON.stringify(coins));
-document.getElementById("coinInput").value="";
-loadCoins();
+function addHolding(e){
+e.preventDefault();
+
+let coin=document.getElementById("coin").value.trim().toLowerCase();
+let amount=Number(document.getElementById("amount").value);
+
+holdings.push({coin,amount,cost:0});
+localStorage.setItem("portfolio",JSON.stringify(holdings));
+
+e.target.reset();
+load();
 }
 
-function removeCoin(id){
-coins=coins.filter(x=>x!==id);
-localStorage.setItem("coins",JSON.stringify(coins));
-loadCoins();
+function removeHolding(i){
+holdings.splice(i,1);
+localStorage.setItem("portfolio",JSON.stringify(holdings));
+load();
 }
 
-async function showDetails(id){
-document.getElementById("dashboard").style.display="none";
-document.getElementById("details").style.display="block";
-
-const r=await fetch(`https://api.coingecko.com/api/v3/coins/${id}`);
-const d=await r.json();
-const m=d.market_data;
-
-document.getElementById("coinName").textContent="🪙 "+d.name;
-document.getElementById("detailPrice").textContent="$"+m.current_price.usd.toLocaleString();
-document.getElementById("detailChange").textContent=m.price_change_percentage_24h.toFixed(2)+"%";
-document.getElementById("detailHigh").textContent="$"+m.high_24h.usd.toLocaleString();
-document.getElementById("detailLow").textContent="$"+m.low_24h.usd.toLocaleString();
-document.getElementById("detailCap").textContent="$"+m.market_cap.usd.toLocaleString();
-document.getElementById("detailVolume").textContent="$"+m.total_volume.usd.toLocaleString();
-
-const p=await fetch(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=7`);
-const data=await p.json();
-
-if(chart)chart.destroy();
-
-chart=new Chart(document.getElementById("chart"),{
-type:"line",
-data:{
-labels:data.prices.map(x=>new Date(x[0]).toLocaleDateString()),
-datasets:[{
-label:d.name+" Price",
-data:data.prices.map(x=>x[1]),
-borderWidth:2,
-pointRadius:0
-}]
-},
-options:{
-responsive:true,
-plugins:{legend:{display:true}},
-scales:{x:{display:false}}
-}
-});
-}
-
-function showDashboard(){
-document.getElementById("details").style.display="none";
-document.getElementById("dashboard").style.display="block";
-}
-
-loadCoins();
+load();
+setInterval(load,60000);
 </script>
 
 </body>

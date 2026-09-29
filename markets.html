@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color" content="#f5efe6">
+
+<title>Crypto Online — Markets</title>
+
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link
+ href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+ rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="app">
+
+<aside class="sidebar" id="sidebar">
+
+<div class="brand">
+<div class="brand-mark">C</div>
+<div>
+<strong>Crypto Online</strong>
+<span>Market Intelligence</span>
+</div>
+</div>
+
+<nav class="sidebar-nav">
+
+<div class="nav-label">MAIN</div>
+
+<a href="index.html" class="nav-link">
+<span>⌂</span><span>Dashboard</span>
+</a>
+
+<a href="markets.html" class="nav-link active">
+<span>◈</span><span>Markets</span>
+</a>
+
+<div class="nav-label">PERSONAL</div>
+
+<a href="portfolio.html" class="nav-link">
+<span>▣</span><span>Portfolio</span>
+</a>
+
+<a href="portfolio.html#watchlist" class="nav-link">
+<span>★</span><span>Watchlist</span>
+</a>
+
+<div class="nav-label">INTELLIGENCE</div>
+
+<a href="intelligence.html" class="nav-link">
+<span>◔</span><span>Intelligence</span>
+</a>
+
+<a href="intelligence.html#ai" class="nav-link">
+<span>✦</span><span>AI Assistant</span>
+</a>
+
+<div class="nav-label">RESOURCES</div>
+
+<a href="resources.html" class="nav-link">
+<span>▤</span><span>News & Academy</span>
+</a>
+
+</nav>
+
+</aside>
+
+<main class="main">
+
+<header class="topbar">
+
+<button class="mobile-menu"
+        id="mobileMenu">
+☰
+</button>
+
+<div class="page-heading">
+<span class="eyebrow">MARKET DATA</span>
+<h1>Markets</h1>
+</div>
+
+<div class="topbar-actions">
+
+<div class="global-search">
+<span>⌕</span>
+<input id="globalSearch"
+       type="search"
+       placeholder="Search crypto...">
+<div id="globalSearchResults"></div>
+</div>
+
+<button class="top-icon"
+        id="refreshMarket">
+↻
+</button>
+
+<div class="user-chip">
+<div class="user-avatar">U</div>
+<div class="user-info">
+<strong>Crypto User</strong>
+<span>Investor</span>
+</div>
+</div>
+
+</div>
+
+</header>
+
+<section class="page">
+
+<div class="page-intro">
+<span class="eyebrow">CRYPTO DATABASE</span>
+<h2>Explore the crypto market.</h2>
+<p>
+Search, filter, compare and inspect cryptocurrency
+assets using live market information.
+</p>
+</div>
+<div class="market-stat-strip">
+
+<div>
+<span>Market Cap</span>
+<strong id="totalMarketCap">--</strong>
+</div>
+
+<div>
+<span>Volume</span>
+<strong id="totalVolume">--</strong>
+</div>
+
+<div>
+<span>BTC Dominance</span>
+<strong id="btcDominance">--</strong>
+</div>
+
+<div>
+<span>ETH Dominance</span>
+<strong id="ethDominance">--</strong>
+</div>
+
+</div>
+
+
+<section class="surface explorer-panel">
+
+<div class="surface-header">
+
+<div>
+<span class="eyebrow">EXPLORER</span>
+<h3>Coin Explorer</h3>
+</div>
+
+<button class="button secondary"
+        id="resetExplorer">
+Reset
+</button>
+
+</div>
+
+<div class="filter-toolbar">
+
+<div class="field grow">
+<label>Search</label>
+<input
+ id="explorerSearch"
+ type="search"
+ placeholder="Bitcoin, Ethereum, SOL...">
+</div>
+
+<div class="field">
+<label>Market Filter</label>
+<select id="explorerFilter">
+<option value="all">All Assets</option>
+<option value="gainers">Gainers</option>
+<option value="losers">Losers</option>
+<option value="top10">Top 10</option>
+<option value="top50">Top 50</option>
+</select>
+</div>
+
+<div class="field">
+<label>Sort</label>
+<select id="explorerSort">
+<option value="rank">Market Rank</option>
+<option value="market_cap">Market Cap</option>
+<option value="price">Price</option>
+<option value="change">24H Change</option>
+<option value="volume">Volume</option>
+</select>
+</div>
+
+<div class="field">
+<label>Order</label>
+<select id="explorerDirection">
+<option value="asc">Ascending</option>
+<option value="desc">Descending</option>
+</select>
+</div>
+
+</div>
+
+
+<div class="filter-toolbar compact">
+
+<div class="field">
+<label>Min Market Cap</label>
+<input id="minMarketCap"
+       type="number"
+       placeholder="0">
+</div>
+
+<div class="field">
+<label>Max Market Cap</label>
+<input id="maxMarketCap"
+       type="number"
+       placeholder="No limit">
+</div>
+
+<div class="field">
+<label>Min 24H %</label>
+<input id="minChange"
+       type="number"
+       placeholder="-100">
+</div>
+
+<div class="field">
+<label>Max 24H %</label>
+<input id="maxChange"
+       type="number"
+       placeholder="100">
+</div>
+
+</div>
+
+
+<div class="table-meta">
+<span id="explorerCount">Loading assets...</span>
+<span>Live market data</span>
+</div>
+
+
+<div class="table-scroll">
+
+<table class="data-table">
+
+<thead>
+<tr>
+<th>Rank</th>
+<th>Asset</th>
+<th>Price</th>
+<th>24H</th>
+<th>Market Cap</th>
+<th>Volume</th>
+<th>Supply</th>
+<th>Actions</th>
+</tr>
+</thead>
+
+<tbody id="explorerTable">
+<tr>
+<td colspan="8"
+    class="table-loading">
+Loading market data...
+</td>
+</tr>
+</tbody>
+
+</table>
+
+</div>
+
+
+<div id="explorerPagination"
+     class="pagination"></div>
+
+</section>
+<section class="section-block">
+
+<div class="section-heading">
+<div>
+<span class="eyebrow">SCREENER</span>
+<h2>Market Screener</h2>
+</div>
+</div>
+
+<div class="surface screener-panel">
+
+<div class="screener-score-box">
+
+<div>
+<span class="eyebrow">
+MARKET SIGNAL
+</span>
+<h3>Descriptive market scoring</h3>
+<p>
+Scores summarize recent price, volume and
+market-position data. They are not predictions.
+</p>
+</div>
+
+<div class="signal-number"
+     id="screenerMarketScore">
+--
+</div>
+
+</div>
+
+<div class="filter-toolbar">
+
+<div class="field grow">
+<label>Search</label>
+<input id="screenerSearch"
+       type="search"
+       placeholder="Search assets">
+</div>
+
+<div class="field">
+<label>Mode</label>
+<select id="screenerMode">
+<option value="all">All</option>
+<option value="momentum">Momentum</option>
+<option value="volume">Volume Activity</option>
+<option value="gainers">Gainers</option>
+<option value="losers">Losers</option>
+</select>
+</div>
+
+<div class="field">
+<label>Sort</label>
+<select id="screenerSort">
+<option value="score">Signal Score</option>
+<option value="change">24H Change</option>
+<option value="volume">Volume Activity</option>
+<option value="market_cap">Market Cap</option>
+<option value="rank">Market Rank</option>
+</select>
+</div>
+
+</div>
+
+<div class="table-scroll">
+
+<table class="data-table">
+
+<thead>
+<tr>
+<th>Asset</th>
+<th>Price</th>
+<th>24H</th>
+<th>7D</th>
+<th>30D</th>
+<th>Volume</th>
+<th>Market Cap</th>
+<th>Signal</th>
+</tr>
+</thead>
+
+<tbody id="screenerTable">
+<tr>
+<td colspan="8"
+    class="table-loading">
+Loading screener...
+</td>
+</tr>
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+<section class="section-block">
+
+<div class="section-heading">
+<div>
+<span class="eyebrow">COMPARE</span>
+<h2>Compare Assets</h2>
+</div>
+</div>
+
+<div class="surface compare-panel">
+
+<div class="compare-select-grid">
+
+<div class="field">
+<label>Asset One</label>
+<select id="compareCoin1">
+<option value="">Select asset</option>
+</select>
+</div>
+
+<div class="field">
+<label>Asset Two</label>
+<select id="compareCoin2">
+<option value="">Select asset</option>
+</select>
+</div>
+
+<div class="field">
+<label>Asset Three</label>
+<select id="compareCoin3">
+<option value="">Optional</option>
+</select>
+</div>
+
+<button
+ id="compareButton"
+ class="button primary">
+Compare
+</button>
+
+</div>
+
+<div id="compareResults"
+     class="compare-results">
+
+<div class="empty-state">
+<span>⇄</span>
+<h3>Compare cryptocurrencies</h3>
+<p>
+Select two or three assets to compare their
+market statistics and recent performance.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="coinDetailsSection"
+         class="section-block">
+
+<div class="section-heading">
+
+<div>
+<span class="eyebrow">ASSET TERMINAL</span>
+<h2>Coin Details</h2>
+</div>
+
+<button
+ id="closeCoinDetails"
+ class="button secondary">
+Clear
+</button>
+
+</div>
+
+<div id="coinDetails"
+     class="surface coin-terminal">
+
+<div class="empty-state">
+<span>◈</span>
+<h3>Select an asset</h3>
+<p>
+Choose Details from the market table to
+open the professional coin terminal.
+</p>
+</div>
+
+</div>
+
+</section>
+
+</section>
+
+<footer class="footer">
+<strong>Crypto Online</strong>
+<span>Market Intelligence Platform</span>
+</footer>
+
+</main>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script
+ src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js">
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>

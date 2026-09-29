@@ -1,489 +1,2259 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Crypto Online | Crypto Intelligence Platform</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="stylesheet" href="style.css">
+    <meta
+        name="description"
+        content="Crypto Online — Cryptocurrency Market Intelligence, Analytics, Portfolio Tracking and Crypto Tools."
+    >
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta
+        name="theme-color"
+        content="#2563eb"
+    >
+
+    <title>
+        Crypto Online | Market Intelligence
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
 </head>
 
 <body>
 
-<div class="app">
+<!-- =========================================================
+     SIDEBAR
+========================================================= -->
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
+<aside class="sidebar">
 
-        <div class="brand">
-            <div class="brand-logo">C</div>
+    <div class="brand">
+
+        <div class="brand-logo">
+            ₿
+        </div>
+
+        <div class="brand-text">
+
+            <strong>
+                Crypto Online
+            </strong>
+
+            <span>
+                Market Intelligence
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+        <div class="nav-section-title">
+            MAIN
+        </div>
+
+        <a
+            href="#dashboard"
+            class="nav-link active"
+        >
+            <span>▣</span>
+            <span>Dashboard</span>
+        </a>
+
+        <a
+            href="#markets"
+            class="nav-link"
+        >
+            <span>◈</span>
+            <span>Markets</span>
+        </a>
+
+        <a
+            href="#coin-explorer"
+            class="nav-link"
+        >
+            <span>⌕</span>
+            <span>Coin Explorer</span>
+        </a>
+
+        <a
+            href="#screener"
+            class="nav-link"
+        >
+            <span>☷</span>
+            <span>Screener</span>
+        </a>
+
+        <a
+            href="#charts"
+            class="nav-link"
+        >
+            <span>⌁</span>
+            <span>Charts</span>
+        </a>
+
+        <a
+            href="#compare"
+            class="nav-link"
+        >
+            <span>⇄</span>
+            <span>Compare</span>
+        </a>
+
+
+        <div class="nav-section-title">
+            PORTFOLIO
+        </div>
+
+        <a
+            href="#watchlist"
+            class="nav-link"
+        >
+            <span>☆</span>
+            <span>Watchlist</span>
+        </a>
+
+        <a
+            href="#portfolio"
+            class="nav-link"
+        >
+            <span>◫</span>
+            <span>Portfolio</span>
+        </a>
+
+        <a
+            href="#alerts"
+            class="nav-link"
+        >
+            <span>♢</span>
+            <span>Alerts</span>
+        </a>
+
+
+        <div class="nav-section-title">
+            INTELLIGENCE
+        </div>
+
+        <a
+            href="#market-intelligence"
+            class="nav-link"
+        >
+            <span>◉</span>
+            <span>Market Intelligence</span>
+        </a>
+
+        <a
+            href="#sentiment"
+            class="nav-link"
+        >
+            <span>◌</span>
+            <span>Sentiment</span>
+        </a>
+
+        <a
+            href="#ai-intelligence"
+            class="nav-link"
+        >
+            <span>✦</span>
+            <span>AI Intelligence</span>
+        </a>
+
+        <a
+            href="#news"
+            class="nav-link"
+        >
+            <span>▤</span>
+            <span>News</span>
+        </a>
+
+
+        <div class="nav-section-title">
+            TOOLS
+        </div>
+
+        <a
+            href="#tools"
+            class="nav-link"
+        >
+            <span>⚙</span>
+            <span>Crypto Tools</span>
+        </a>
+
+        <a
+            href="#academy"
+            class="nav-link"
+        >
+            <span>▣</span>
+            <span>Academy</span>
+        </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <div class="sidebar-status">
+
+            <span class="status-dot"></span>
+
+            <span>
+                Market Data Online
+            </span>
+
+        </div>
+
+        <small>
+            Crypto Online v1.0
+        </small>
+
+    </div>
+
+</aside>
+
+
+<!-- =========================================================
+     MAIN APPLICATION
+========================================================= -->
+
+<main class="main-content">
+
+
+<!-- =========================================================
+     TOPBAR
+========================================================= -->
+
+<header class="topbar">
+
+    <div class="mobile-brand">
+        <strong>
+            Crypto Online
+        </strong>
+    </div>
+
+
+    <div class="topbar-search">
+
+        <span>
+            ⌕
+        </span>
+
+        <input
+            type="text"
+            id="globalSearch"
+            placeholder="Search Bitcoin, Ethereum, Solana..."
+            autocomplete="off"
+        >
+
+    </div>
+
+
+    <div class="topbar-actions">
+
+        <button
+            id="refreshMarket"
+            class="icon-button"
+            title="Refresh market"
+        >
+            ↻
+        </button>
+
+        <button
+            id="notificationButton"
+            class="icon-button"
+            title="Notifications"
+        >
+            ♢
+        </button>
+
+        <div class="profile-button">
+
+            <div class="profile-avatar">
+                CO
+            </div>
+
+            <div class="profile-info">
+
+                <strong>
+                    Crypto User
+                </strong>
+
+                <span>
+                    Investor
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     DASHBOARD
+========================================================= -->
+
+<section
+    id="dashboard"
+    class="page-section"
+>
+
+    <div class="hero-section">
+
+        <div class="hero-content">
+
+            <span class="hero-label">
+                CRYPTO MARKET INTELLIGENCE
+            </span>
+
+            <h1>
+                Understand the Crypto Market.
+            </h1>
+
+            <p>
+                Track prices, market movements, sentiment,
+                portfolio performance and blockchain activity
+                from one intelligent dashboard.
+            </p>
+
+            <div class="hero-actions">
+
+                <a
+                    href="#coin-explorer"
+                    class="primary-button"
+                >
+                    Explore Markets
+                </a>
+
+                <a
+                    href="#ai-intelligence"
+                    class="secondary-button"
+                >
+                    AI Intelligence
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="hero-market-card">
+
+            <span>
+                Market Status
+            </span>
+
+            <strong>
+                Live
+            </strong>
+
+            <small>
+                Data updates automatically
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <!-- GLOBAL MARKET STATS -->
+
+    <div class="section-heading">
+
+        <div>
+            <span class="section-kicker">
+                GLOBAL MARKET
+            </span>
+
+            <h2>
+                Market Overview
+            </h2>
+        </div>
+
+    </div>
+
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+
+            <span>
+                Total Market Cap
+            </span>
+
+            <strong class="stat-value">
+                Loading...
+            </strong>
+
+            <small>
+                Global crypto market
+            </small>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>
+                24H Volume
+            </span>
+
+            <strong class="stat-value">
+                Loading...
+            </strong>
+
+            <small>
+                Trading activity
+            </small>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>
+                BTC Dominance
+            </span>
+
+            <strong class="stat-value">
+                Loading...
+            </strong>
+
+            <small>
+                Bitcoin share
+            </small>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>
+                ETH Dominance
+            </span>
+
+            <strong class="stat-value">
+                Loading...
+            </strong>
+
+            <small>
+                Ethereum share
+            </small>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>
+                Market Sentiment
+            </span>
+
+            <strong
+                class="stat-value"
+                id="marketSentiment"
+            >
+                Loading...
+            </strong>
+
+            <small>
+                Fear & Greed
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <!-- BITCOIN / ADVANCED CHART -->
+
+    <section
+        id="charts"
+        class="content-panel chart-panel"
+    >
+
+        <div class="panel-header">
+
+            <div class="asset-title">
+
+                <div class="asset-icon">
+                    ₿
+                </div>
+
+                <div>
+
+                    <h3>
+                        Bitcoin
+                    </h3>
+
+                    <span>
+                        BTC
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="chart-price">
+
+                <strong>
+                    Loading...
+                </strong>
+
+                <span>
+                    --
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="chart-container">
+
+            <canvas
+                id="btcChart"
+            ></canvas>
+
+        </div>
+
+
+        <div class="chart-volume-container">
+
+            <canvas
+                id="btcVolumeChart"
+            ></canvas>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEAR AND GREED -->
+
+    <section
+        id="sentiment"
+        class="content-panel sentiment-panel"
+    >
+
+        <div class="panel-header">
 
             <div>
-                <h2>Crypto Online</h2>
-                <span>Market Intelligence</span>
+
+                <span class="section-kicker">
+                    MARKET SENTIMENT
+                </span>
+
+                <h2>
+                    Fear & Greed Index
+                </h2>
+
             </div>
+
         </div>
 
 
-        <nav class="sidebar-nav">
+        <div class="sentiment-content">
 
-            <a href="#dashboard" class="nav-link active">
-                <span>▦</span>
-                Dashboard
-            </a>
+            <div class="fear-greed-meter">
 
-            <a href="#markets" class="nav-link">
-                <span>◈</span>
-                Markets
-            </a>
+                <strong
+                    id="fearGreedValue"
+                >
+                    --
+                </strong>
 
-            <a href="#screener" class="nav-link">
-                <span>⌕</span>
-                Screener
-            </a>
+                <span
+                    id="fearGreedLabel"
+                >
+                    Loading...
+                </span>
 
-            <a href="#coin-explorer" class="nav-link">
-                <span>◎</span>
+            </div>
+
+
+            <div class="sentiment-description">
+
+                <p>
+                    The Fear & Greed Index provides a
+                    snapshot of current crypto market
+                    sentiment.
+                </p>
+
+                <small>
+                    Source: Alternative.me
+                </small>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</section>
+
+
+<!-- =========================================================
+     MARKETS
+========================================================= -->
+
+<section
+    id="markets"
+    class="page-section"
+>
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="section-kicker">
+                MARKET DATA
+            </span>
+
+            <h2>
+                Cryptocurrency Markets
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <!-- MARKET MOVERS -->
+
+    <div class="market-movers-grid">
+
+        <div class="content-panel">
+
+            <div class="panel-header">
+
+                <h3>
+                    Top Gainers
+                </h3>
+
+            </div>
+
+            <div
+                id="topGainers"
+                class="coin-list"
+            >
+
+                <div class="loading-state">
+                    Loading market data...
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="content-panel">
+
+            <div class="panel-header">
+
+                <h3>
+                    Top Losers
+                </h3>
+
+            </div>
+
+            <div
+                id="topLosers"
+                class="coin-list"
+            >
+
+                <div class="loading-state">
+                    Loading market data...
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="content-panel">
+
+            <div class="panel-header">
+
+                <h3>
+                    Trending
+                </h3>
+
+            </div>
+
+            <div
+                id="trendingCoins"
+                class="coin-list"
+            >
+
+                <div class="loading-state">
+                    Loading market data...
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     COIN EXPLORER
+========================================================= -->
+
+<section
+    id="coin-explorer"
+    class="page-section"
+>
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="section-kicker">
+                ASSET DISCOVERY
+            </span>
+
+            <h2>
                 Coin Explorer
-            </a>
+            </h2>
 
-            <a href="#compare" class="nav-link">
-                <span>⇄</span>
-                Compare
-            </a>
-
-            <a href="#coin-details" class="nav-link">
-                <span>◉</span>
-                Coin Details
-            </a>
-
-            <a href="#watchlist" class="nav-link">
-                <span>★</span>
-                Watchlist
-            </a>
-
-            <a href="#portfolio" class="nav-link">
-                <span>▣</span>
-                Portfolio
-            </a>
-
-            <a href="#intelligence" class="nav-link">
-                <span>◌</span>
-                Market Intelligence
-            </a>
-
-            <a href="#sentiment" class="nav-link">
-                <span>◒</span>
-                Sentiment
-            </a>
-
-            <a href="#news" class="nav-link">
-                <span>▤</span>
-                News
-            </a>
-
-            <a href="#tools" class="nav-link">
-                <span>⌘</span>
-                Crypto Tools
-            </a>
-
-            <a href="#academy" class="nav-link">
-                <span>?</span>
-                Academy
-            </a>
-
-        </nav>
-
-
-        <div class="sidebar-bottom">
-
-            <div class="sidebar-status">
-                <span class="status-dot"></span>
-                Live Market Data
-            </div>
+            <p>
+                Explore cryptocurrencies by market
+                capitalization, price and performance.
+            </p>
 
         </div>
 
-    </aside>
+    </div>
 
 
-    <!-- MAIN -->
-    <main class="main-content">
+    <div
+        id="explorer27"
+        class="content-panel"
+    >
+
+        <div class="explorer-placeholder">
+
+            <strong>
+                Coin Explorer
+            </strong>
+
+            <p>
+                Loading advanced cryptocurrency explorer...
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
 
 
-        <!-- TOPBAR -->
-        <header class="topbar">
+<!-- =========================================================
+     SCREENER
+========================================================= -->
+
+<section
+    id="screener"
+    class="page-section"
+>
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="section-kicker">
+                MARKET FILTER
+            </span>
+
+            <h2>
+                Crypto Screener
+            </h2>
+
+            <p>
+                Filter and sort assets using live market
+                data.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="content-panel">
+
+        <div class="screener-controls">
+
+            <input
+                type="text"
+                id="screenerSearch"
+                placeholder="Search coins..."
+            >
+
+
+            <select
+                id="screenerQuickFilter"
+            >
+
+                <option value="all">
+                    All Assets
+                </option>
+
+                <option value="gainers">
+                    Gainers
+                </option>
+
+                <option value="losers">
+                    Losers
+                </option>
+
+                <option value="top10">
+                    Top 10
+                </option>
+
+                <option value="top50">
+                    Top 50
+                </option>
+
+            </select>
+
+
+            <select
+                id="screenerSort"
+            >
+
+                <option value="market_cap_rank">
+                    Market Rank
+                </option>
+
+                <option value="current_price">
+                    Price
+                </option>
+
+                <option value="price_change_percentage_24h">
+                    24H Change
+                </option>
+
+                <option value="market_cap">
+                    Market Cap
+                </option>
+
+                <option value="total_volume">
+                    Volume
+                </option>
+
+            </select>
+
+
+            <select
+                id="screenerDirection"
+            >
+
+                <option value="asc">
+                    Ascending
+                </option>
+
+                <option value="desc">
+                    Descending
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="screener-filter-row">
+
+            <input
+                type="number"
+                id="screenerMinChange"
+                placeholder="Min 24H %"
+            >
+
+            <input
+                type="number"
+                id="screenerMaxChange"
+                placeholder="Max 24H %"
+            >
+
+            <input
+                type="number"
+                id="screenerMinMarketCap"
+                placeholder="Min Market Cap"
+            >
+
+            <input
+                type="number"
+                id="screenerMaxMarketCap"
+                placeholder="Max Market Cap"
+            >
 
             <button
-                id="mobileMenuButton"
-                class="mobile-menu-button"
+                id="resetScreener"
+                class="secondary-button"
             >
-                ☰
+                Reset
             </button>
 
+        </div>
 
-            <div class="global-search">
 
-                <span>⌕</span>
+        <div
+            id="screenerCount"
+            class="screener-count"
+        >
+            Loading...
+        </div>
+
+
+        <div
+            id="screenerTable"
+            class="screener-table"
+        >
+
+            <div class="loading-state">
+                Loading screener...
+            </div>
+
+        </div>
+
+
+        <div
+            id="screenerPagination"
+            class="pagination"
+        ></div>
+
+    </div>
+
+</section>
+<!-- =========================================================
+     COMPARE
+========================================================= -->
+
+<section
+    id="compare"
+    class="page-section"
+>
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="section-kicker">
+                COMPARISON
+            </span>
+
+            <h2>
+                Compare Cryptocurrencies
+            </h2>
+
+            <p>
+                Compare prices, market capitalization,
+                volume, performance and supply data.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="content-panel compare-panel">
+
+        <div class="compare-controls">
+
+            <div class="compare-input-group">
+
+                <label for="compareCoin1">
+                    Asset 1
+                </label>
+
+                <select id="compareCoin1">
+                    <option value="">
+                        Select cryptocurrency
+                    </option>
+                </select>
+
+            </div>
+
+
+            <div class="compare-vs">
+                VS
+            </div>
+
+
+            <div class="compare-input-group">
+
+                <label for="compareCoin2">
+                    Asset 2
+                </label>
+
+                <select id="compareCoin2">
+                    <option value="">
+                        Select cryptocurrency
+                    </option>
+                </select>
+
+            </div>
+
+
+            <div class="compare-vs">
+                VS
+            </div>
+
+
+            <div class="compare-input-group">
+
+                <label for="compareCoin3">
+                    Asset 3
+                </label>
+
+                <select id="compareCoin3">
+
+                    <option value="">
+                        None
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <button
+                id="compareButton"
+                class="primary-button"
+            >
+                Compare Assets
+            </button>
+
+        </div>
+
+
+        <div
+            id="compareStatus"
+            class="compare-status"
+        >
+            Select at least two cryptocurrencies to begin.
+        </div>
+
+
+        <div
+            id="compareResults"
+            class="compare-results"
+        >
+
+            <div class="compare-empty">
+
+                <strong>
+                    Cryptocurrency Comparison
+                </strong>
+
+                <p>
+                    Select two or three assets above.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     COIN DETAILS
+========================================================= -->
+
+<section
+    id="coin-details"
+    class="page-section"
+>
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="section-kicker">
+                ASSET PROFILE
+            </span>
+
+            <h2>
+                Coin Details
+            </h2>
+
+        </div>
+
+
+        <button
+            id="closeCoinDetails"
+            class="secondary-button"
+        >
+            Close
+        </button>
+
+    </div>
+
+
+    <div class="content-panel">
+
+        <div class="coin-detail-header">
+
+            <div class="coin-detail-identity">
+
+                <img
+                    id="detailCoinImage"
+                    src=""
+                    alt=""
+                >
+
+                <div>
+
+                    <h2 id="detailCoinName">
+                        --
+                    </h2>
+
+                    <span id="detailCoinSymbol">
+                        --
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="coin-detail-actions">
+
+                <button
+                    id="detailWatchButton"
+                    class="primary-button"
+                >
+                    Add to Watchlist
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="coin-detail-price">
+
+            <strong id="detailCoinPrice">
+                --
+            </strong>
+
+            <span id="detailCoinChange">
+                --
+            </span>
+
+        </div>
+
+
+        <div class="coin-detail-rank">
+
+            Market Rank:
+
+            <strong id="detailCoinRank">
+                --
+            </strong>
+
+        </div>
+
+
+        <div class="detail-chart-container">
+
+            <canvas
+                id="coinDetailChart"
+            ></canvas>
+
+        </div>
+
+
+        <div class="detail-stats-grid">
+
+            <div class="detail-stat">
+
+                <span>
+                    Market Cap
+                </span>
+
+                <strong id="detailMarketCap">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="detail-stat">
+
+                <span>
+                    24H Volume
+                </span>
+
+                <strong id="detailVolume">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="detail-stat">
+
+                <span>
+                    Circulating Supply
+                </span>
+
+                <strong id="detailCirculating">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="detail-stat">
+
+                <span>
+                    Total Supply
+                </span>
+
+                <strong id="detailTotalSupply">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="detail-stat">
+
+                <span>
+                    All Time High
+                </span>
+
+                <strong id="detailAth">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="detail-stat">
+
+                <span>
+                    All Time Low
+                </span>
+
+                <strong id="detailAtl">
+                    --
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="coin-description">
+
+            <h3>
+                About this asset
+            </h3>
+
+            <div id="detailDescription">
+                Select a cryptocurrency to view its description.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         AI COIN ANALYSIS
+    ====================================================== -->
+
+    <div
+        id="aiCoinAnalysis"
+        class="content-panel"
+    >
+
+        <div class="panel-header">
+
+            <div>
+
+                <span class="section-kicker">
+                    AI MARKET ANALYSIS
+                </span>
+
+                <h3>
+                    AI Coin Analysis
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div class="ai-analysis-controls">
+
+            <select id="aiCoinSelector">
+
+                <option value="">
+                    Select a cryptocurrency
+                </option>
+
+            </select>
+
+
+            <button
+                id="runAIAnalysis"
+                class="primary-button"
+            >
+                Run AI Analysis
+            </button>
+
+        </div>
+
+
+        <div
+            id="aiAnalysisResult"
+            class="ai-analysis-result"
+        >
+
+            <div class="empty-state">
+
+                <strong>
+                    AI Analysis Ready
+                </strong>
+
+                <p>
+                    Select a cryptocurrency and run
+                    an analysis.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         PROFESSIONAL COIN TERMINAL
+    ====================================================== -->
+
+    <div
+        id="coinTerminal28"
+        class="content-panel"
+    >
+
+        <div class="loading-state">
+
+            Loading professional coin terminal...
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     WATCHLIST
+========================================================= -->
+
+<section
+    id="watchlist"
+    class="page-section"
+>
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="section-kicker">
+                PERSONAL TRACKING
+            </span>
+
+            <h2>
+                Watchlist
+            </h2>
+
+            <p>
+                Keep track of cryptocurrencies you're
+                monitoring.
+            </p>
+
+        </div>
+
+
+        <div class="watchlist-count">
+
+            <span>
+                Assets
+            </span>
+
+            <strong id="watchlistCount">
+                0
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="content-panel">
+
+        <div
+            id="watchlistContainer"
+            class="watchlist-grid"
+        >
+
+            <div class="empty-state">
+
+                <strong>
+                    Your watchlist is empty
+                </strong>
+
+                <p>
+                    Add cryptocurrencies from the explorer
+                    or coin details page.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div
+        id="watchlistIntelligence"
+        class="content-panel"
+    >
+
+        <div class="empty-state">
+
+            Watchlist intelligence will appear here.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     PORTFOLIO
+========================================================= -->
+
+<section
+    id="portfolio"
+    class="page-section"
+>
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="section-kicker">
+                PORTFOLIO MANAGEMENT
+            </span>
+
+            <h2>
+                Portfolio
+            </h2>
+
+            <p>
+                Track your cryptocurrency holdings and
+                current portfolio value.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- BASIC PORTFOLIO ENTRY -->
+
+    <div class="content-panel">
+
+        <div class="panel-header">
+
+            <div>
+
+                <h3>
+                    Add Holding
+                </h3>
+
+                <span>
+                    Enter the asset and purchase details.
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="portfolio-form">
+
+            <select id="portfolioCoin">
+
+                <option value="">
+                    Select cryptocurrency
+                </option>
+
+            </select>
+
+
+            <input
+                type="number"
+                id="portfolioQuantity"
+                placeholder="Quantity"
+                min="0"
+                step="any"
+            >
+
+
+            <input
+                type="number"
+                id="portfolioBuyPrice"
+                placeholder="Average Buy Price (USD)"
+                min="0"
+                step="any"
+            >
+
+
+            <button
+                id="addPortfolioAsset"
+                class="primary-button"
+            >
+                Add Holding
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- PORTFOLIO SUMMARY -->
+
+    <div
+        id="portfolioSummary"
+        class="portfolio-summary-grid"
+    >
+
+        <div class="portfolio-summary-card">
+
+            <span>
+                Current Value
+            </span>
+
+            <strong id="portfolioCurrentValue">
+                $0.00
+            </strong>
+
+        </div>
+
+
+        <div class="portfolio-summary-card">
+
+            <span>
+                Total Invested
+            </span>
+
+            <strong id="portfolioInvested">
+                $0.00
+            </strong>
+
+        </div>
+
+
+        <div class="portfolio-summary-card">
+
+            <span>
+                Unrealized P/L
+            </span>
+
+            <strong id="portfolioProfitLoss">
+                $0.00
+            </strong>
+
+        </div>
+
+
+        <div class="portfolio-summary-card">
+
+            <span>
+                Holdings
+            </span>
+
+            <strong id="portfolioHoldingsCount">
+                0
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <!-- BASIC PORTFOLIO TABLE -->
+
+    <div class="content-panel">
+
+        <div class="panel-header">
+
+            <h3>
+                Holdings
+            </h3>
+
+        </div>
+
+
+        <div
+            id="portfolioTable"
+            class="portfolio-table"
+        >
+
+            <div class="empty-state">
+
+                No portfolio holdings yet.
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- PORTFOLIO INTELLIGENCE 2.0 -->
+
+    <div
+        id="portfolio20"
+        class="content-panel"
+    >
+
+        <div class="loading-state">
+
+            Loading portfolio intelligence...
+
+        </div>
+
+    </div>
+
+
+    <!-- PORTFOLIO PRO 29 -->
+
+    <div
+        id="portfolioPro29"
+        class="content-panel"
+    >
+
+        <div class="loading-state">
+
+            Loading Portfolio Pro...
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =========================================================
+     ALERTS
+========================================================= -->
+
+<section
+    id="alerts"
+    class="page-section"
+>
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="section-kicker">
+                MARKET MONITORING
+            </span>
+
+            <h2>
+                Crypto Alerts
+            </h2>
+
+            <p>
+                Create price and percentage-change alerts
+                for cryptocurrencies.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div
+        id="cryptoAlerts23"
+        class="content-panel"
+    >
+
+        <div class="loading-state">
+
+            Loading crypto alerts...
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     MARKET INTELLIGENCE
+========================================================= -->
+
+<section
+    id="market-intelligence"
+    class="page-section"
+>
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="section-kicker">
+                INTELLIGENCE CENTER
+            </span>
+
+            <h2>
+                Market Intelligence
+            </h2>
+
+            <p>
+                Combine market data, sentiment,
+                on-chain activity and portfolio information.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ORIGINAL INTELLIGENCE -->
+
+    <div class="content-panel">
+
+        <div class="panel-header">
+
+            <div>
+
+                <span class="section-kicker">
+                    LIVE INTELLIGENCE
+                </span>
+
+                <h3>
+                    Market Briefing
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div class="intelligence-grid">
+
+            <div class="intelligence-item">
+
+                <span>
+                    Market Sentiment
+                </span>
+
+                <strong id="sentimentIntelligence">
+                    Loading...
+                </strong>
+
+            </div>
+
+
+            <div class="intelligence-item">
+
+                <span>
+                    Market Status
+                </span>
+
+                <strong>
+                    Live
+                </strong>
+
+            </div>
+
+
+            <div class="intelligence-item">
+
+                <span>
+                    Data Source
+                </span>
+
+                <strong>
+                    Public APIs
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ADVANCED MARKET INTELLIGENCE -->
+
+    <div
+        id="advancedMarketIntelligence"
+        class="content-panel"
+    >
+
+        <div class="loading-state">
+
+            Loading advanced market intelligence...
+
+        </div>
+
+    </div>
+
+
+    <!-- ON-CHAIN / WHALE INTELLIGENCE -->
+
+    <div
+        id="cryptoOnChain24"
+        class="content-panel"
+    >
+
+        <div class="loading-state">
+
+            Loading on-chain intelligence...
+
+        </div>
+
+    </div>
+
+
+    <!-- MARKET INTELLIGENCE TERMINAL -->
+
+    <div
+        id="cryptoTerminal25"
+        class="content-panel"
+    >
+
+        <div class="loading-state">
+
+            Loading market intelligence terminal...
+
+        </div>
+
+    </div>
+
+
+    <!-- CATEGORY INTELLIGENCE -->
+
+    <div
+        id="cryptoCategory26"
+        class="content-panel"
+    >
+
+        <div class="loading-state">
+
+            Loading crypto category intelligence...
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     AI INTELLIGENCE
+========================================================= -->
+
+<section
+    id="ai-intelligence"
+    class="page-section"
+>
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="section-kicker">
+                ARTIFICIAL INTELLIGENCE
+            </span>
+
+            <h2>
+                AI Crypto Intelligence
+            </h2>
+
+            <p>
+                Ask questions about the current cryptocurrency
+                market using the built-in intelligence assistant.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div
+        id="cryptoAI22"
+        class="content-panel"
+    >
+
+        <div class="loading-state">
+
+            Loading Crypto AI Assistant...
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     NEWS
+========================================================= -->
+
+<section
+    id="news"
+    class="page-section"
+>
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="section-kicker">
+                CRYPTO NEWS
+            </span>
+
+            <h2>
+                Crypto News Center
+            </h2>
+
+            <p>
+                Follow current cryptocurrency news and
+                market developments.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="content-panel">
+
+        <div class="news-toolbar">
+
+            <div class="news-search">
 
                 <input
                     type="text"
-                    id="globalSearch"
-                    placeholder="Search Bitcoin, Ethereum, Solana..."
+                    id="cryptoNewsSearch"
+                    placeholder="Search crypto news..."
                 >
-
-                <div
-                    id="globalSearchResults"
-                    class="global-search-results"
-                ></div>
 
             </div>
 
 
-            <div class="topbar-actions">
+            <div class="news-categories">
 
                 <button
-                    id="refreshButton"
-                    class="icon-button"
-                    title="Refresh"
+                    class="news-category active"
+                    data-category="latest"
                 >
-                    ↻
+                    Latest
                 </button>
 
                 <button
-                    class="icon-button"
-                    title="Notifications"
+                    class="news-category"
+                    data-category="bitcoin"
                 >
-                    ♢
+                    Bitcoin
                 </button>
 
-                <div class="profile">
+                <button
+                    class="news-category"
+                    data-category="ethereum"
+                >
+                    Ethereum
+                </button>
 
-                    <div class="profile-avatar">
-                        U
-                    </div>
+                <button
+                    class="news-category"
+                    data-category="altcoins"
+                >
+                    Altcoins
+                </button>
 
-                    <span>User</span>
-
-                </div>
+                <button
+                    class="news-category"
+                    data-category="market"
+                >
+                    Market
+                </button>
 
             </div>
 
-        </header>
+
+            <button
+                id="refreshCryptoNews"
+                class="secondary-button"
+            >
+                Refresh News
+            </button>
+
+        </div>
 
 
-        <!-- DASHBOARD -->
-        <section
-            id="dashboard"
-            class="page-section"
+        <div
+            id="cryptoNewsStatus"
+            class="news-status"
+        >
+            Loading latest crypto news...
+        </div>
+
+
+        <div
+            id="cryptoNewsGrid"
+            class="news-grid"
         >
 
-            <div class="hero">
+            <div class="loading-state">
 
-                <div>
-
-                    <span class="eyebrow">
-                        CRYPTO INTELLIGENCE
-                    </span>
-
-                    <h1>
-                        Understand the market.
-                        <br>
-                        <span>
-                            Trade with better information.
-                        </span>
-                    </h1>
-
-                    <p>
-                        Track global crypto markets, discover assets,
-                        compare coins and monitor market sentiment.
-                    </p>
-
-                </div>
-
-
-                <div class="hero-badge">
-
-                    <span class="status-dot"></span>
-
-                    Live Data
-
-                </div>
+                Loading news...
 
             </div>
 
+        </div>
 
-            <!-- GLOBAL MARKET -->
 
-            <div class="section-heading">
+        <div class="news-attribution">
 
-                <div>
+            News provided by CryptoCompare.
 
-                    <span class="section-label">
-                        GLOBAL MARKET
-                    </span>
+        </div>
 
-                    <h2>
-                        Market Overview
-                    </h2>
+    </div>
 
-                </div>
+</section>
 
-            </div>
 
+<!-- =========================================================
+     CRYPTO TOOLS
+========================================================= -->
 
-            <div class="stats-grid">
+<section
+    id="tools"
+    class="page-section"
+>
 
-                <div class="stat-card">
+    <div class="section-heading">
 
-                    <span class="stat-label">
-                        Total Market Cap
-                    </span>
+        <div>
 
-                    <strong class="stat-value">
-                        --
-                    </strong>
+            <span class="section-kicker">
+                CRYPTO TOOLS
+            </span>
 
-                    <span class="stat-sub">
-                        Global crypto market
-                    </span>
+            <h2>
+                Crypto Calculators
+            </h2>
 
-                </div>
+            <p>
+                Useful calculators for cryptocurrency
+                analysis and planning.
+            </p>
 
+        </div>
 
-                <div class="stat-card">
+    </div>
 
-                    <span class="stat-label">
-                        24H Volume
-                    </span>
 
-                    <strong class="stat-value">
-                        --
-                    </strong>
+    <div
+        id="cryptoTools20"
+        class="content-panel"
+    >
 
-                    <span class="stat-sub">
-                        Trading activity
-                    </span>
+        <div class="loading-state">
 
-                </div>
+            Loading crypto tools...
 
+        </div>
 
-                <div class="stat-card">
+    </div>
 
-                    <span class="stat-label">
-                        BTC Dominance
-                    </span>
+</section>
 
-                    <strong class="stat-value">
-                        --
-                    </strong>
 
-                    <span class="stat-sub">
-                        Bitcoin share
-                    </span>
+<!-- =========================================================
+     ACADEMY
+========================================================= -->
 
-                </div>
+<section
+    id="academy"
+    class="page-section"
+>
 
+    <div class="section-heading">
 
-                <div class="stat-card">
+        <div>
 
-                    <span class="stat-label">
-                        ETH Dominance
-                    </span>
+            <span class="section-kicker">
+                EDUCATION
+            </span>
 
-                    <strong class="stat-value">
-                        --
-                    </strong>
+            <h2>
+                Crypto Academy
+            </h2>
 
-                    <span class="stat-sub">
-                        Ethereum share
-                    </span>
+            <p>
+                Learn cryptocurrency, blockchain,
+                DeFi, security, tokenomics and market analysis.
+            </p>
 
-                </div>
+        </div>
 
+    </div>
 
-                <div class="stat-card">
 
-                    <span class="stat-label">
-                        Market Sentiment
-                    </span>
+    <div
+        id="academy20"
+        class="content-panel"
+    >
 
-                    <strong
-                        id="marketSentiment"
-                        class="stat-value"
-                    >
-                        --
-                    </strong>
+        <div class="loading-state">
 
-                    <span class="stat-sub">
-                        Fear & Greed
-                    </span>
+            Loading Crypto Academy...
 
-                </div>
+        </div>
 
-            </div>
+    </div>
 
+</section>
 
-            <!-- BITCOIN CHART -->
 
-            <div class="dashboard-grid">
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
-                <div class="panel large-panel">
+<footer class="site-footer">
 
-                    <div class="panel-header">
+    <div class="footer-main">
 
-                        <div class="asset-title">
+        <div class="footer-brand">
 
-                            <div class="coin-icon btc-icon">
-                                ₿
-                            </div>
+            <strong>
+                Crypto Online
+            </strong>
 
-                            <div>
+            <p>
+                Cryptocurrency market intelligence,
+                analytics and educational tools.
+            </p>
 
-                                <h3>
-                                    Bitcoin
-                                </h3>
+        </div>
 
-                                <span>
-                                    BTC
-                                </span>
 
-                            </div>
+        <div class="footer-links">
 
-                        </div>
+            <a href="#dashboard">
+                Dashboard
+            </a>
 
+            <a href="#markets">
+                Markets
+            </a>
 
-                        <div class="chart-price">
+            <a href="#coin-explorer">
+                Explorer
+            </a>
 
-                            <strong>
-                                $--
-                            </strong>
+            <a href="#portfolio">
+                Portfolio
+            </a>
 
-                            <span>
-                                --
-                            </span>
+            <a href="#academy">
+                Academy
+            </a>
 
-                        </div>
+        </div>
 
-                    </div>
+    </div>
 
 
-                    <div class="chart-container">
+    <div class="footer-bottom">
 
-                        <canvas id="btcChart"></canvas>
+        <span>
+            © 2026 Crypto Online
+        </span>
 
-                    </div>
+        <span>
+            Market data provided by public APIs.
+        </span>
 
-                </div>
+    </div>
 
+</footer>
+<!-- =========================================================
+     APPLICATION STATUS / FALLBACK CONTAINERS
+========================================================= -->
 
-                <!-- FEAR & GREED -->
+<div
+    id="appToast"
+    class="app-toast"
+    aria-live="polite"
+></div>
 
-                <div
-                    id="sentiment"
-                    class="panel sentiment-panel"
-                >
 
-                    <div class="panel-header">
+<div
+    id="loadingOverlay"
+    class="loading-overlay"
+    hidden
+>
 
-                        <div>
+    <div class="loading-spinner"></div>
 
-                            <span class="section-label">
-                                MARKET MOOD
-                            </span>
+    <span>
+        Loading...
+    </span>
 
-                            <h3>
-                                Fear & Greed
-                            </h3>
+</div>
 
-                        </div>
 
-                    </div>
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
 
+<script
+    src="https://cdn.jsdelivr.net/npm/chart.js"
+></script>
 
-                    <div class="fear-gauge">
+<script
+    src="script.js"
+></script>
 
-                        <div
-                            class="fear-number"
-                            id="fearGreedValue"
-                        >
-                            --
-                        </div>
 
-                        <div
-                            class="fear-label"
-                            id="fearGreedLabel"
-                        >
-                            Loading...
-                        </div>
+</main>
 
-                    </div>
-
-
-                    <div class="sentiment-scale">
-
-                        <span>
-                            Extreme Fear
-                        </span>
-
-                        <span>
-                            Neutral
-                        </span>
-
-                        <span>
-                            Extreme Greed
-                        </span>
-
-                    </div>
-
-
-                    <small class="source-note">
-                        Source: Alternative.me
-                    </small>
-
-                </div>
-
-            </div>
-
-
-            <!-- MARKET MOVERS -->
-
-            <div
-                id="markets"
-                class="section-heading"
-            >
-
-                <div>
-
-                    <span class="section-label">
-                        LIVE MARKET
-                    </span>
-
-                    <h2>
-                        Market Movers
-                    </h2>
-
-                </div>
-
-            </div>
-
-
-            <div class="movers-grid">
-
-
-                <div class="panel">
-
-                    <div class="panel-header">
-                        <h3>
-                            Top Gainers
-                        </h3>
-                    </div>
-
-                    <div
-                        id="gainersList"
-                        class="mover-list"
-                    >
-                        <div class="
+</body>
+</html>

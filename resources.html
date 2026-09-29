@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Crypto Online — Resources</title>
+
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link
+ href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+ rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="app">
+
+<aside class="sidebar" id="sidebar">
+
+<div class="brand">
+<div class="brand-mark">C</div>
+<div>
+<strong>Crypto Online</strong>
+<span>Market Intelligence</span>
+</div>
+</div>
+
+<nav class="sidebar-nav">
+
+<div class="nav-label">MAIN</div>
+
+<a href="index.html" class="nav-link">
+<span>⌂</span><span>Dashboard</span>
+</a>
+
+<a href="markets.html" class="nav-link">
+<span>◈</span><span>Markets</span>
+</a>
+
+<div class="nav-label">PERSONAL</div>
+
+<a href="portfolio.html" class="nav-link">
+<span>▣</span><span>Portfolio</span>
+</a>
+
+<a href="portfolio.html#watchlist" class="nav-link">
+<span>★</span><span>Watchlist</span>
+</a>
+
+<div class="nav-label">INTELLIGENCE</div>
+
+<a href="intelligence.html" class="nav-link">
+<span>◔</span><span>Intelligence</span>
+</a>
+
+<a href="intelligence.html#ai" class="nav-link">
+<span>✦</span><span>AI Assistant</span>
+</a>
+
+<div class="nav-label">RESOURCES</div>
+
+<a href="resources.html" class="nav-link active">
+<span>▤</span><span>News & Academy</span>
+</a>
+
+</nav>
+
+</aside>
+
+<main class="main">
+
+<header class="topbar">
+
+<button class="mobile-menu"
+        id="mobileMenu">
+☰
+</button>
+
+<div class="page-heading">
+<span class="eyebrow">RESOURCES</span>
+<h1>News & Tools</h1>
+</div>
+
+<div class="topbar-actions">
+
+<div class="global-search">
+<span>⌕</span>
+<input id="globalSearch"
+       type="search"
+       placeholder="Search crypto...">
+<div id="globalSearchResults"></div>
+</div>
+
+</div>
+
+</header>
+
+<section class="page">
+
+<div class="page-intro">
+<span class="eyebrow">CRYPTO RESOURCES</span>
+<h2>Learn, calculate and stay informed.</h2>
+<p>
+Crypto news, educational lessons and practical
+calculators in one dedicated workspace.
+</p>
+</div>
+<section id="news"
+         class="section-block">
+
+<div class="section-heading">
+
+<div>
+<span class="eyebrow">NEWS CENTER</span>
+<h2>Latest Crypto News</h2>
+</div>
+
+<button
+ id="refreshNews"
+ class="button secondary">
+Refresh
+</button>
+
+</div>
+
+<div class="news-toolbar">
+
+<div class="field grow">
+<label>Search news</label>
+<input id="newsSearch"
+       type="search"
+       placeholder="Bitcoin, Ethereum, regulation...">
+</div>
+
+<div class="news-tabs">
+
+<button class="news-tab active"
+        data-news-category="latest">
+Latest
+</button>
+
+<button class="news-tab"
+        data-news-category="bitcoin">
+Bitcoin
+</button>
+
+<button class="news-tab"
+        data-news-category="ethereum">
+Ethereum
+</button>
+
+<button class="news-tab"
+        data-news-category="altcoins">
+Altcoins
+</button>
+
+<button class="news-tab"
+        data-news-category="market">
+Market
+</button>
+
+</div>
+
+</div>
+
+<div id="newsStatus"
+     class="section-status">
+Loading news...
+</div>
+
+<div id="newsGrid"
+     class="news-grid">
+
+<div class="loading-card"></div>
+<div class="loading-card"></div>
+<div class="loading-card"></div>
+
+</div>
+
+</section>
+<section id="tools"
+         class="section-block">
+
+<div class="section-heading">
+<div>
+<span class="eyebrow">CRYPTO TOOLS</span>
+<h2>Calculators</h2>
+</div>
+</div>
+
+<div class="tools-grid">
+
+<article class="surface tool-card">
+
+<span class="tool-icon">↕</span>
+<h3>Profit & Loss</h3>
+
+<div class="field">
+<label>Buy Price</label>
+<input id="profitBuy"
+       type="number"
+       placeholder="0">
+</div>
+
+<div class="field">
+<label>Sell Price</label>
+<input id="profitSell"
+       type="number"
+       placeholder="0">
+</div>
+
+<div class="field">
+<label>Quantity</label>
+<input id="profitQuantity"
+       type="number"
+       placeholder="1">
+</div>
+
+<button
+ id="calculateProfit"
+ class="button primary">
+Calculate
+</button>
+
+<strong id="profitResult"
+        class="tool-result">
+$0
+</strong>
+
+</article>
+
+
+<article class="surface tool-card">
+
+<span class="tool-icon">%</span>
+<h3>Percentage Change</h3>
+
+<div class="field">
+<label>Old Value</label>
+<input id="percentOld"
+       type="number"
+       placeholder="0">
+</div>
+
+<div class="field">
+<label>New Value</label>
+<input id="percentNew"
+       type="number"
+       placeholder="0">
+</div>
+
+<button
+ id="calculatePercent"
+ class="button primary">
+Calculate
+</button>
+
+<strong id="percentResult"
+        class="tool-result">
+0%
+</strong>
+
+</article>
+
+
+<article class="surface tool-card">
+
+<span class="tool-icon">◎</span>
+<h3>Market Cap</h3>
+
+<div class="field">
+<label>Price</label>
+<input id="capPrice"
+       type="number"
+       placeholder="0">
+</div>
+
+<div class="field">
+<label>Circulating Supply</label>
+<input id="capSupply"
+       type="number"
+       placeholder="0">
+</div>
+
+<button
+ id="calculateCap"
+ class="button primary">
+Calculate
+</button>
+
+<strong id="capResult"
+        class="tool-result">
+$0
+</strong>
+
+</article>
+
+
+<article class="surface tool-card">
+
+<span class="tool-icon">⇄</span>
+<h3>Crypto Converter</h3>
+
+<div class="field">
+<label>Amount</label>
+<input id="convertAmount"
+       type="number"
+       value="1">
+</div>
+
+<div class="field">
+<label>From</label>
+<select id="convertFrom">
+<option value="bitcoin">Bitcoin</option>
+</select>
+</div>
+
+<div class="field">
+<label>To</label>
+<select id="convertTo">
+<option value="ethereum">Ethereum</option>
+</select>
+</div>
+
+<button
+ id="calculateConverter"
+ class="button primary">
+Convert
+</button>
+
+<strong id="converterResult"
+        class="tool-result">
+--
+</strong>
+
+</article>
+<article class="surface tool-card">
+
+<span class="tool-icon">▤</span>
+<h3>DCA Calculator</h3>
+
+<div class="field">
+<label>Investment Per Period</label>
+<input id="dcaAmount"
+       type="number"
+       placeholder="100">
+</div>
+
+<div class="field">
+<label>Number of Periods</label>
+<input id="dcaPeriods"
+       type="number"
+       placeholder="12">
+</div>
+
+<button
+ id="calculateDca"
+ class="button primary">
+Calculate
+</button>
+
+<strong id="dcaResult"
+        class="tool-result">
+$0
+</strong>
+
+</article>
+
+
+<article class="surface tool-card">
+
+<span class="tool-icon">◫</span>
+<h3>Position Size</h3>
+
+<div class="field">
+<label>Account Size</label>
+<input id="positionAccount"
+       type="number"
+       placeholder="1000">
+</div>
+
+<div class="field">
+<label>Risk %</label>
+<input id="positionRisk"
+       type="number"
+       value="1">
+</div>
+
+<div class="field">
+<label>Stop Distance %</label>
+<input id="positionStop"
+       type="number"
+       value="5">
+</div>
+
+<button
+ id="calculatePosition"
+ class="button primary">
+Calculate
+</button>
+
+<strong id="positionResult"
+        class="tool-result">
+$0
+</strong>
+
+</article>
+
+</div>
+
+<div class="tool-note">
+These calculators are educational utilities.
+They do not constitute financial advice.
+</div>
+
+</section>
+
+
+<section id="academy"
+         class="section-block">
+
+<div class="section-heading">
+
+<div>
+<span class="eyebrow">CRYPTO ACADEMY</span>
+<h2>Learn Crypto</h2>
+</div>
+
+<div class="academy-progress">
+<span id="academyProgressText">
+0% complete
+</span>
+
+<div>
+<i id="academyProgressBar"
+   style="width:0%">
+</i>
+</div>
+
+</div>
+
+</div>
+
+<div class="academy-filters">
+
+<button class="academy-filter active"
+        data-academy-level="all">
+All
+</button>
+
+<button class="academy-filter"
+        data-academy-level="beginner">
+Beginner
+</button>
+
+<button class="academy-filter"
+        data-academy-level="intermediate">
+Intermediate
+</button>
+
+<button class="academy-filter"
+        data-academy-level="advanced">
+Advanced
+</button>
+
+</div>
+
+<div id="academyGrid"
+     class="academy-grid"></div>
+
+</section>
+
+</section>
+
+<footer class="footer">
+<strong>Crypto Online</strong>
+<span>Learn & Explore</span>
+</footer>
+
+</main>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<div id="academyModal"
+     class="modal-backdrop">
+
+<div class="modal">
+<button id="closeAcademy"
+        class="modal-close">
+×
+</button>
+
+<div id="academyModalContent"></div>
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

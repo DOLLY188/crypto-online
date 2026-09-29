@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Crypto Online — Intelligence</title>
+
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link
+ href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+ rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="app">
+
+<aside class="sidebar" id="sidebar">
+
+<div class="brand">
+<div class="brand-mark">C</div>
+<div>
+<strong>Crypto Online</strong>
+<span>Market Intelligence</span>
+</div>
+</div>
+
+<nav class="sidebar-nav">
+
+<div class="nav-label">MAIN</div>
+
+<a href="index.html" class="nav-link">
+<span>⌂</span><span>Dashboard</span>
+</a>
+
+<a href="markets.html" class="nav-link">
+<span>◈</span><span>Markets</span>
+</a>
+
+<div class="nav-label">PERSONAL</div>
+
+<a href="portfolio.html" class="nav-link">
+<span>▣</span><span>Portfolio</span>
+</a>
+
+<a href="portfolio.html#watchlist" class="nav-link">
+<span>★</span><span>Watchlist</span>
+</a>
+
+<div class="nav-label">INTELLIGENCE</div>
+
+<a href="intelligence.html" class="nav-link active">
+<span>◔</span><span>Intelligence</span>
+</a>
+
+<a href="#ai" class="nav-link">
+<span>✦</span><span>AI Assistant</span>
+</a>
+
+<div class="nav-label">RESOURCES</div>
+
+<a href="resources.html" class="nav-link">
+<span>▤</span><span>News & Academy</span>
+</a>
+
+</nav>
+
+</aside>
+
+<main class="main">
+
+<header class="topbar">
+
+<button class="mobile-menu"
+        id="mobileMenu">
+☰
+</button>
+
+<div class="page-heading">
+<span class="eyebrow">ANALYTICS</span>
+<h1>Market Intelligence</h1>
+</div>
+
+<div class="topbar-actions">
+
+<div class="global-search">
+<span>⌕</span>
+<input id="globalSearch"
+       type="search"
+       placeholder="Search crypto...">
+<div id="globalSearchResults"></div>
+</div>
+
+<button class="top-icon"
+        id="refreshMarket">
+↻
+</button>
+
+</div>
+
+</header>
+
+<section class="page">
+
+<div class="page-intro">
+<span class="eyebrow">INTELLIGENCE TERMINAL</span>
+<h2>Read the market from multiple angles.</h2>
+<p>
+Charts, sentiment, market structure, on-chain
+activity and AI-assisted explanations.
+</p>
+</div>
+<section id="charts"
+         class="section-block">
+
+<div class="section-heading">
+<div>
+<span class="eyebrow">ADVANCED CHARTS</span>
+<h2>Market Charts</h2>
+</div>
+</div>
+
+<div class="surface">
+
+<div class="chart-controls">
+
+<div class="field">
+<label>Asset</label>
+<select id="advancedChartCoin">
+<option value="bitcoin">Bitcoin</option>
+</select>
+</div>
+
+<div class="chart-range-buttons">
+
+<button data-range="1"
+        class="chart-range active">
+24H
+</button>
+
+<button data-range="7"
+        class="chart-range">
+7D
+</button>
+
+<button data-range="30"
+        class="chart-range">
+30D
+</button>
+
+<button data-range="90"
+        class="chart-range">
+90D
+</button>
+
+<button data-range="365"
+        class="chart-range">
+1Y
+</button>
+
+</div>
+
+</div>
+
+<div class="chart-wrap huge">
+<canvas id="advancedChart"></canvas>
+</div>
+
+</div>
+
+</section>
+
+
+<section id="sentiment"
+         class="section-block">
+
+<div class="section-heading">
+<div>
+<span class="eyebrow">SENTIMENT</span>
+<h2>Market Sentiment</h2>
+</div>
+</div>
+
+<div class="intelligence-grid">
+
+<div class="surface sentiment-large">
+
+<div class="sentiment-ring large"
+     id="largeSentimentRing">
+
+<strong id="largeFearGreed">
+--
+</strong>
+
+<span id="largeFearGreedLabel">
+Loading
+</span>
+
+</div>
+
+<div>
+<span class="eyebrow">
+FEAR & GREED
+</span>
+
+<h3 id="sentimentHeadline">
+Market sentiment
+</h3>
+
+<p id="sentimentAnalysis">
+Loading current sentiment analysis...
+</p>
+</div>
+
+</div>
+
+<div class="surface">
+
+<div class="surface-header">
+<div>
+<span class="eyebrow">MARKET BREADTH</span>
+<h3>Advancing vs Declining</h3>
+</div>
+</div>
+
+<div class="breadth-bars">
+
+<div class="breadth-row">
+<span>Positive</span>
+<div>
+<i id="positiveBreadth"
+   style="width:0%">
+</i>
+</div>
+<strong id="positiveBreadthText">0%</strong>
+</div>
+
+<div class="breadth-row">
+<span>Negative</span>
+<div>
+<i id="negativeBreadth"
+   style="width:0%">
+</i>
+</div>
+<strong id="negativeBreadthText">0%</strong>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<section id="terminal"
+         class="section-block">
+
+<div class="section-heading">
+<div>
+<span class="eyebrow">TERMINAL</span>
+<h2>Market Intelligence Terminal</h2>
+</div>
+
+<span class="live-badge">
+<span></span>
+Live
+</span>
+</div>
+
+<div class="terminal-grid">
+
+<div class="terminal-main surface">
+
+<div class="terminal-regime">
+
+<span class="eyebrow">
+CURRENT MARKET STATE
+</span>
+
+<h2 id="marketRegime">
+Analyzing...
+</h2>
+
+<p id="marketBriefing">
+The intelligence engine is collecting
+current market information.
+</p>
+
+</div>
+
+<div class="terminal-metrics">
+
+<div>
+<span>BTC 24H</span>
+<strong id="terminalBTCChange">--</strong>
+</div>
+
+<div>
+<span>BTC Dominance</span>
+<strong id="terminalBTCDominance">--</strong>
+</div>
+
+<div>
+<span>Market Breadth</span>
+<strong id="terminalBreadth">--</strong>
+</div>
+
+<div>
+<span>Volume / Cap</span>
+<strong id="terminalVolumeRatio">--</strong>
+</div>
+
+<div>
+<span>Fear & Greed</span>
+<strong id="terminalFearGreed">--</strong>
+</div>
+
+<div>
+<span>Large BTC Transactions</span>
+<strong id="terminalWhales">--</strong>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="surface">
+
+<div class="surface-header">
+<div>
+<span class="eyebrow">ON-CHAIN</span>
+<h3>Bitcoin Network</h3>
+</div>
+</div>
+
+<div class="onchain-stat-list">
+
+<div>
+<span>Block Height</span>
+<strong id="blockHeight">--</strong>
+</div>
+
+<div>
+<span>Mempool Transactions</span>
+<strong id="mempoolCount">--</strong>
+</div>
+
+<div>
+<span>Recommended Fee</span>
+<strong id="recommendedFee">--</strong>
+</div>
+
+<div>
+<span>Large Transactions</span>
+<strong id="largeTxCount">--</strong>
+</div>
+
+</div>
+
+<a
+ href="https://mempool.space/"
+ target="_blank"
+ rel="noopener"
+ class="button secondary full">
+Open Bitcoin Explorer
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section-block">
+
+<div class="section-heading">
+<div>
+<span class="eyebrow">SECTORS</span>
+<h2>Crypto Categories</h2>
+</div>
+</div>
+
+<div class="surface">
+
+<div class="filter-toolbar">
+
+<div class="field grow">
+<label>Search category</label>
+<input id="categorySearch"
+       type="search"
+       placeholder="DeFi, AI, Layer 1...">
+</div>
+
+</div>
+
+<div class="table-scroll">
+
+<table class="data-table">
+
+<thead>
+<tr>
+<th>Rank</th>
+<th>Category</th>
+<th>Market Cap</th>
+<th>24H</th>
+<th>Assets</th>
+</tr>
+</thead>
+
+<tbody id="categoryTable">
+<tr>
+<td colspan="5"
+    class="table-loading">
+Loading categories...
+</td>
+</tr>
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+<section id="ai"
+         class="section-block">
+
+<div class="section-heading">
+<div>
+<span class="eyebrow">AI INTELLIGENCE</span>
+<h2>Crypto AI Assistant</h2>
+</div>
+</div>
+
+<div class="ai-layout">
+
+<div class="surface ai-chat">
+
+<div class="ai-header">
+
+<div class="ai-avatar">
+✦
+</div>
+
+<div>
+<strong>Crypto Intelligence AI</strong>
+<span>Market-data assistant</span>
+</div>
+
+</div>
+
+<div id="aiMessages"
+     class="ai-messages">
+
+<div class="ai-message assistant">
+Hello. I can explain current crypto market
+data, sentiment, movers, watchlist activity,
+portfolio information and basic crypto concepts.
+</div>
+
+</div>
+
+<div class="ai-prompts">
+
+<button data-ai-prompt="What is the current market condition?">
+Market condition
+</button>
+
+<button data-ai-prompt="What is Bitcoin doing today?">
+Bitcoin
+</button>
+
+<button data-ai-prompt="Explain Fear and Greed">
+Fear & Greed
+</button>
+
+<button data-ai-prompt="Show top gainers">
+Top gainers
+</button>
+
+</div>
+
+<div class="ai-input">
+
+<input
+ id="aiInput"
+ type="text"
+ placeholder="Ask about the crypto market...">
+
+<button id="aiSend"
+        class="button primary">
+Send
+</button>
+
+</div>
+
+</div>
+
+
+<div class="surface ai-context">
+
+<span class="eyebrow">
+LIVE CONTEXT
+</span>
+
+<h3>Market Snapshot</h3>
+
+<div class="context-stat">
+<span>BTC</span>
+<strong id="aiBTCPrice">--</strong>
+</div>
+
+<div class="context-stat">
+<span>BTC Dominance</span>
+<strong id="aiBTCDominance">--</strong>
+</div>
+
+<div class="context-stat">
+<span>Fear & Greed</span>
+<strong id="aiFearGreed">--</strong>
+</div>
+
+<div class="context-stat">
+<span>Watchlist</span>
+<strong id="aiWatchlistCount">0</strong>
+</div>
+
+<div class="context-stat">
+<span>Portfolio</span>
+<strong id="aiPortfolioValue">$0</strong>
+</div>
+
+</div>
+
+</div>
+
+
+<section class="section-block">
+
+<div class="section-heading">
+<div>
+<span class="eyebrow">ON-CHAIN ACTIVITY</span>
+<h2>Large Bitcoin Transactions</h2>
+</div>
+
+<button
+ id="refreshOnChain"
+ class="button secondary">
+Refresh
+</button>
+
+</div>
+
+<div class="surface">
+
+<div class="table-scroll">
+
+<table class="data-table">
+
+<thead>
+<tr>
+<th>Time</th>
+<th>BTC</th>
+<th>Estimated USD</th>
+<th>Transaction</th>
+</tr>
+</thead>
+
+<tbody id="largeTransactions">
+<tr>
+<td colspan="4"
+    class="table-loading">
+Loading blockchain activity...
+</td>
+</tr>
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+</section>
+
+</section>
+
+<footer class="footer">
+<strong>Crypto Online</strong>
+<span>Market Intelligence Terminal</span>
+</footer>
+
+</main>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script
+ src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js">
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
